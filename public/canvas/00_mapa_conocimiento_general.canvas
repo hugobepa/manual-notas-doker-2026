@@ -1,0 +1,172 @@
+{
+  "nodes": [
+    {
+      "id": "moc-general",
+      "type": "file",
+      "file": "MOC_Docker_General.md",
+      "x": 0,
+      "y": 0,
+      "width": 300,
+      "height": 150,
+      "color": "1"
+    },
+    {
+      "id": "moc-fundamentos",
+      "type": "file",
+      "file": "MOC_Fundamentos.md",
+      "x": -400,
+      "y": -200,
+      "width": 280,
+      "height": 120,
+      "color": "2"
+    },
+    {
+      "id": "moc-dockerfiles",
+      "type": "file",
+      "file": "MOC_Dockerfiles.md",
+      "x": -200,
+      "y": -200,
+      "width": 280,
+      "height": 120,
+      "color": "3"
+    },
+    {
+      "id": "moc-compose",
+      "type": "file",
+      "file": "MOC_Compose.md",
+      "x": 100,
+      "y": -200,
+      "width": 280,
+      "height": 120,
+      "color": "4"
+    },
+    {
+      "id": "moc-arquitecturas",
+      "type": "file",
+      "file": "MOC_Arquitecturas.md",
+      "x": -400,
+      "y": 100,
+      "width": 280,
+      "height": 120,
+      "color": "5"
+    },
+    {
+      "id": "moc-ia",
+      "type": "file",
+      "file": "MOC_IA_Despliegues.md",
+      "x": -100,
+      "y": 100,
+      "width": 280,
+      "height": 120,
+      "color": "6"
+    },
+    {
+      "id": "moc-podman",
+      "type": "file",
+      "file": "MOC_Podman.md",
+      "x": 200,
+      "y": 100,
+      "width": 280,
+      "height": 120,
+      "color": "2"
+    },
+    {
+      "id": "moc-soporte",
+      "type": "file",
+      "file": "MOC_Soporte.md",
+      "x": -300,
+      "y": 280,
+      "width": 280,
+      "height": 120,
+      "color": "4"
+    },
+    {
+      "id": "dashboard-general",
+      "type": "file",
+      "file": "08_Dashboards/00_dashboard_general.md",
+      "x": 0,
+      "y": 320,
+      "width": 280,
+      "height": 120,
+      "color": "1"
+    },
+    {
+      "id": "label-fundamentos",
+      "type": "text",
+      "text": "**00_Fundamentos**\n(11 notas)\n⭐ principiante",
+      "x": -560,
+      "y": -320,
+      "width": 200,
+      "height": 80
+    },
+    {
+      "id": "label-dockerfiles",
+      "type": "text",
+      "text": "**01_Dockerfiles**\n(9 notas)\n📦 principiante→avanzado",
+      "x": -340,
+      "y": -340,
+      "width": 220,
+      "height": 80
+    },
+    {
+      "id": "label-compose",
+      "type": "text",
+      "text": "**02_Compose**\n(4 notas)\n🐳 intermedio→avanzado",
+      "x": -40,
+      "y": -330,
+      "width": 220,
+      "height": 80
+    },
+    {
+      "id": "label-arquitecturas",
+      "type": "text",
+      "text": "**03+04_Arquitecturas**\n(15 notas)\n🏗️🔗 intermedio→avanzado",
+      "x": -560,
+      "y": -20,
+      "width": 240,
+      "height": 80
+    },
+    {
+      "id": "label-ia",
+      "type": "text",
+      "text": "**05_IA_Despliegues**\n(10 notas)\n🤖 principiante→avanzado",
+      "x": -250,
+      "y": -20,
+      "width": 240,
+      "height": 80
+    },
+    {
+      "id": "label-podman",
+      "type": "text",
+      "text": "**06_Podman**\n(8 notas)\n🦭 principiante→intermedio",
+      "x": 60,
+      "y": -20,
+      "width": 240,
+      "height": 80
+    },
+    {
+      "id": "label-soporte",
+      "type": "text",
+      "text": "**07_Soporte**\n(7 notas)\n📖 principiante→intermedio",
+      "x": -460,
+      "y": 200,
+      "width": 240,
+      "height": 80
+    }
+  ],
+  "edges": [
+    { "id": "e1", "fromNode": "moc-general", "fromSide": "top", "toNode": "moc-fundamentos", "toSide": "bottom" },
+    { "id": "e2", "fromNode": "moc-general", "fromSide": "top", "toNode": "moc-dockerfiles", "toSide": "bottom" },
+    { "id": "e3", "fromNode": "moc-general", "fromSide": "top", "toNode": "moc-compose", "toSide": "bottom" },
+    { "id": "e4", "fromNode": "moc-general", "fromSide": "left", "toNode": "moc-arquitecturas", "toSide": "right" },
+    { "id": "e5", "fromNode": "moc-general", "fromSide": "right", "toNode": "moc-ia", "toSide": "left" },
+    { "id": "e6", "fromNode": "moc-general", "fromSide": "right", "toNode": "moc-podman", "toSide": "left" },
+    { "id": "e7", "fromNode": "moc-general", "fromSide": "bottom", "toNode": "moc-soporte", "toSide": "top" },
+    { "id": "e8", "fromNode": "moc-fundamentos", "fromSide": "right", "toNode": "moc-dockerfiles", "toSide": "left" },
+    { "id": "e9", "fromNode": "moc-dockerfiles", "fromSide": "right", "toNode": "moc-compose", "toSide": "left" },
+    { "id": "e10", "fromNode": "moc-compose", "fromSide": "bottom", "toNode": "moc-arquitecturas", "toSide": "top" },
+    { "id": "e11", "fromNode": "moc-arquitecturas", "fromSide": "right", "toNode": "moc-ia", "toSide": "left" },
+    { "id": "e12", "fromNode": "moc-ia", "fromSide": "right", "toNode": "moc-podman", "toSide": "left" },
+    { "id": "e13", "fromNode": "moc-general", "fromSide": "bottom", "toNode": "dashboard-general", "toSide": "top" }
+  ]
+}

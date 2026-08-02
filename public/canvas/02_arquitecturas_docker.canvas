@@ -1,0 +1,171 @@
+{
+  "nodes": [
+    {
+      "id": "title",
+      "type": "text",
+      "text": "## 🏗️ Patrones de Arquitectura Docker\n\nTres patrones principales para\nconectar servicios con Docker.",
+      "x": 100,
+      "y": -300,
+      "width": 400,
+      "height": 100
+    },
+    {
+      "id": "patron1-group",
+      "type": "group",
+      "label": "🔨 PATRÓN 1: Monorepo con DB",
+      "x": -350,
+      "y": -100,
+      "width": 280,
+      "height": 280,
+      "color": "2"
+    },
+    {
+      "id": "p1-frontend",
+      "type": "text",
+      "text": "**Frontend**\n(:3000)\n\n03_crear_frontend",
+      "x": -310,
+      "y": -60,
+      "width": 140,
+      "height": 80
+    },
+    {
+      "id": "p1-backend",
+      "type": "text",
+      "text": "**Backend**\n(:4000)\n\n04_crear_backend",
+      "x": -130,
+      "y": -60,
+      "width": 140,
+      "height": 80
+    },
+    {
+      "id": "p1-db",
+      "type": "text",
+      "text": "**Database**\n(:5432)\n\n02_crear_db",
+      "x": -220,
+      "y": 80,
+      "width": 140,
+      "height": 80
+    },
+    {
+      "id": "p1-ref",
+      "type": "file",
+      "file": "03_Creacion_de_Servicios_y_Arquitecturas/01_crear_docker_monorepo_con_base_de_datos.md",
+      "x": -330,
+      "y": 200,
+      "width": 240,
+      "height": 60
+    },
+    {
+      "id": "patron2-group",
+      "type": "group",
+      "label": "🔗 PATRÓN 2: Next.js + API + PostgreSQL",
+      "x": 50,
+      "y": -100,
+      "width": 300,
+      "height": 280,
+      "color": "4"
+    },
+    {
+      "id": "p2-nextjs",
+      "type": "text",
+      "text": "**Next.js (SSR)**\n(:3000)\n\n04_vincular_nextjs",
+      "x": 80,
+      "y": -60,
+      "width": 150,
+      "height": 80
+    },
+    {
+      "id": "p2-api",
+      "type": "text",
+      "text": "**API (Hono)**\n(:4000)\n\n01_vincular_fb",
+      "x": 260,
+      "y": -60,
+      "width": 150,
+      "height": 80
+    },
+    {
+      "id": "p2-db",
+      "type": "text",
+      "text": "**PostgreSQL**\n(:5432)\n\n05_vincular_db",
+      "x": 170,
+      "y": 80,
+      "width": 150,
+      "height": 80
+    },
+    {
+      "id": "p2-ref",
+      "type": "file",
+      "file": "04_Vinculacion_y_Conexiones_Linkar/07_vincular_frontend_nextjs_y_database.md",
+      "x": 80,
+      "y": 200,
+      "width": 240,
+      "height": 60
+    },
+    {
+      "id": "patron3-group",
+      "type": "group",
+      "label": "🌐 PATRÓN 3: Proxy Nginx + Healthcheck",
+      "x": 460,
+      "y": -100,
+      "width": 280,
+      "height": 280,
+      "color": "5"
+    },
+    {
+      "id": "p3-nginx",
+      "type": "text",
+      "text": "**Nginx (:80)**\nProxy inverso\n\n08_healthcheck",
+      "x": 490,
+      "y": -60,
+      "width": 150,
+      "height": 80
+    },
+    {
+      "id": "p3-backend",
+      "type": "text",
+      "text": "**Backend**\n(:4000)\n\nhealthcheck",
+      "x": 650,
+      "y": -60,
+      "width": 150,
+      "height": 80
+    },
+    {
+      "id": "p3-db",
+      "type": "text",
+      "text": "**Database**\n(:5432)\n\nhealthcheck",
+      "x": 570,
+      "y": 80,
+      "width": 150,
+      "height": 80
+    },
+    {
+      "id": "p3-ref",
+      "type": "file",
+      "file": "04_Vinculacion_y_Conexiones_Linkar/08_uso_de_healthcheck_y_nginx_proxy.md",
+      "x": 480,
+      "y": 200,
+      "width": 240,
+      "height": 60
+    },
+    {
+      "id": "compose-ref",
+      "type": "file",
+      "file": "03_Creacion_de_Servicios_y_Arquitecturas/06_docker_compose_frontend_backend_db.md",
+      "x": 60,
+      "y": 300,
+      "width": 280,
+      "height": 60
+    }
+  ],
+  "edges": [
+    { "id": "e1a", "fromNode": "p1-frontend", "fromSide": "right", "toNode": "p1-backend", "toSide": "left", "label": "API call" },
+    { "id": "e1b", "fromNode": "p1-backend", "fromSide": "bottom", "toNode": "p1-db", "toSide": "top", "label": "SQL" },
+    { "id": "e1c", "fromNode": "p1-db", "fromSide": "bottom", "toNode": "p1-ref", "toSide": "top" },
+    { "id": "e2a", "fromNode": "p2-nextjs", "fromSide": "right", "toNode": "p2-api", "toSide": "left", "label": "fetch" },
+    { "id": "e2b", "fromNode": "p2-api", "fromSide": "bottom", "toNode": "p2-db", "toSide": "top", "label": "SQL" },
+    { "id": "e2c", "fromNode": "p2-db", "fromSide": "bottom", "toNode": "p2-ref", "toSide": "top" },
+    { "id": "e3a", "fromNode": "p3-nginx", "fromSide": "right", "toNode": "p3-backend", "toSide": "left", "label": "proxy_pass" },
+    { "id": "e3b", "fromNode": "p3-backend", "fromSide": "bottom", "toNode": "p3-db", "toSide": "top", "label": "SQL" },
+    { "id": "e3c", "fromNode": "p3-db", "fromSide": "bottom", "toNode": "p3-ref", "toSide": "top" }
+  ]
+}

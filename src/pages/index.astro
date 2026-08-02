@@ -1,0 +1,113 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { ArrowRight } from "@lucide/astro";
+import { Kbd } from "@/components/ui/kbd";
+import { SITE } from "@/lib/site-config";
+import { getCategorizedNotes } from "@/lib/wiki/get-categorized-notes";
+import NoteCard from "@/components/wiki/NoteCard.astro";
+
+const categories = await getCategorizedNotes();
+const base = import.meta.env.BASE_URL;
+
+const FOLDER_LABELS: Record<string, string> = {
+  index: "Inicio",
+  "00_Fundamentos_y_Comandos": "Fundamentos",
+  "01_Dockerfiles_y_Multistage": "Dockerfiles",
+  "02_Docker_Compose_Redes_y_Volumenes": "Compose",
+  "03_Creacion_de_Servicios_y_Arquitecturas": "Arquitecturas",
+  "04_Vinculacion_y_Conexiones_Linkar": "Vinculación",
+  "05_IA_y_Despliegues_Modernos": "IA & Cloud",
+  "06_Podman_y_Alternativas": "Podman",
+  "07_Soporte_Guias_y_Recursos": "Soporte",
+  "08_Dashboards": "Dashboards",
+  "09_Canvas": "Canvas",
+  MOC_Docker_General: "MOCs",
+  MOC_Fundamentos: "MOCs",
+  MOC_Dockerfiles: "MOCs",
+  MOC_Compose: "MOCs",
+  MOC_Arquitecturas: "MOCs",
+  MOC_IA_Despliegues: "MOCs",
+  MOC_Podman: "MOCs",
+  MOC_Soporte: "MOCs",
+};
+
+function labelFor(name: string): string {
+  return FOLDER_LABELS[name] || name.replace(/_/g, " ");
+}
+---
+
+<BaseLayout title={`${SITE.title} - Inicio`}>
+  <main class="mx-auto max-w-5xl px-4 py-16 md:py-24" data-pagefind-body>
+    <header class="mb-16">
+      <div class="flex items-center gap-3 mb-4">
+        <img
+          src={`${base}docker-mark-ocean-blue.svg`}
+          alt="Docker"
+          class="h-12 w-12"
+        />
+        <h1 class="text-3xl font-bold tracking-tight md:text-4xl text-[#1d63ed]">
+          {SITE.name}
+        </h1>
+      </div>
+      <p class="mt-3 text-muted-foreground max-w-2xl">
+        {SITE.description} Pulsa <Kbd class="mx-1">⌘K</Kbd> para buscar por
+        título, tags, categoría o complejidad.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a
+          href={`${base}wiki/MOC_Docker_General`}
+          class="btn-docker inline-flex items-center gap-2 rounded-full bg-[#2496ed] px-5 py-2 text-sm font-semibold text-white hover:bg-[#1d63ed]"
+        >
+          <i class="fa-solid fa-map"></i> MOC General
+        </a>
+        <a
+          href={`${base}wiki/08_Dashboards/00_dashboard_general`}
+          class="inline-flex items-center gap-2 rounded-full border-2 border-[#2496ed] px-5 py-2 text-sm font-semibold text-[#1d63ed] hover:bg-[#e8f2fc]"
+        >
+          <i class="fa-solid fa-chart-pie"></i> Dashboards
+        </a>
+        <a
+          href={SITE.github}
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center gap-2 rounded-full px-5 py-2 text-sm font-semibold text-muted-foreground hover:text-foreground"
+        >
+          <i class="fa-brands fa-github"></i> GitHub
+        </a>
+      </div>
+    </header>
+
+    {
+      categories.map(({ name, notes }) => (
+        <section class="mb-14">
+          <h2 class="mb-4 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+            {labelFor(name)} &middot; {notes.length}{" "}
+            {notes.length === 1 ? "nota" : "notas"}
+          </h2>
+          <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {notes.map((note) => (
+              <NoteCard
+                id={note.id}
+                title={note.title}
+                description={note.description}
+                growthStage={note.growthStage}
+                type={note.type}
+                complexity={note.complexity}
+              />
+            ))}
+          </div>
+        </section>
+      ))
+    }
+
+    <footer class="flex justify-center">
+      <a
+        href={`${base}tags`}
+        class="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
+      >
+        Explorar tags
+        <ArrowRight class="size-4" />
+      </a>
+    </footer>
+  </main>
+</BaseLayout>

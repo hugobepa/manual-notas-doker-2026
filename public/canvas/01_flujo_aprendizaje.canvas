@@ -1,0 +1,215 @@
+{
+  "nodes": [
+    {
+      "id": "start",
+      "type": "text",
+      "text": "## 🚀 Ruta de Aprendizaje Docker\n\nSigue el flujo de izquierda a derecha\npara dominar Docker desde cero.",
+      "x": -600,
+      "y": 0,
+      "width": 300,
+      "height": 120
+    },
+    {
+      "id": "fase1",
+      "type": "group",
+      "label": "⭐ FASE 1: Fundamentos (principiante)",
+      "x": -200,
+      "y": -150,
+      "width": 200,
+      "height": 300,
+      "color": "2"
+    },
+    {
+      "id": "f1-01",
+      "type": "file",
+      "file": "00_Fundamentos_y_Comandos/01_conceptos_y_primeros_pasos.md",
+      "x": -180,
+      "y": -120,
+      "width": 160,
+      "height": 60
+    },
+    {
+      "id": "f1-02",
+      "type": "file",
+      "file": "00_Fundamentos_y_Comandos/02_descarga_imagenes_y_creacion_contenedores.md",
+      "x": -180,
+      "y": -40,
+      "width": 160,
+      "height": 60
+    },
+    {
+      "id": "f1-03",
+      "type": "file",
+      "file": "00_Fundamentos_y_Comandos/08_ciclo_de_vida_sencillo.md",
+      "x": -180,
+      "y": 40,
+      "width": 160,
+      "height": 60
+    },
+    {
+      "id": "fase2",
+      "type": "group",
+      "label": "📘 FASE 2: Dockerfiles (principiante→intermedio)",
+      "x": 80,
+      "y": -150,
+      "width": 200,
+      "height": 300,
+      "color": "3"
+    },
+    {
+      "id": "f2-01",
+      "type": "file",
+      "file": "01_Dockerfiles_y_Multistage/01_dockerfile_mas_basico.md",
+      "x": 100,
+      "y": -120,
+      "width": 160,
+      "height": 60
+    },
+    {
+      "id": "f2-02",
+      "type": "file",
+      "file": "01_Dockerfiles_y_Multistage/03_gestion_de_capas_dockerfile.md",
+      "x": 100,
+      "y": -40,
+      "width": 160,
+      "height": 60
+    },
+    {
+      "id": "f2-03",
+      "type": "file",
+      "file": "01_Dockerfiles_y_Multistage/05_optimizacion_y_peso_ligero.md",
+      "x": 100,
+      "y": 40,
+      "width": 160,
+      "height": 60
+    },
+    {
+      "id": "fase3",
+      "type": "group",
+      "label": "🐳 FASE 3: Compose (intermedio)",
+      "x": 360,
+      "y": -150,
+      "width": 200,
+      "height": 300,
+      "color": "4"
+    },
+    {
+      "id": "f3-01",
+      "type": "file",
+      "file": "02_Docker_Compose_Redes_y_Volumenes/01_introduccion_a_docker_compose.md",
+      "x": 380,
+      "y": -120,
+      "width": 160,
+      "height": 60
+    },
+    {
+      "id": "f3-02",
+      "type": "file",
+      "file": "02_Docker_Compose_Redes_y_Volumenes/02_sintaxis_y_configuracion_compose_yaml.md",
+      "x": 380,
+      "y": -40,
+      "width": 160,
+      "height": 60
+    },
+    {
+      "id": "f3-03",
+      "type": "file",
+      "file": "02_Docker_Compose_Redes_y_Volumenes/03_explicacion_y_consejos_de_volumenes.md",
+      "x": 380,
+      "y": 40,
+      "width": 160,
+      "height": 60
+    },
+    {
+      "id": "fase4",
+      "type": "group",
+      "label": "🏗️ FASE 4: Arquitecturas (intermedio→avanzado)",
+      "x": 640,
+      "y": -150,
+      "width": 200,
+      "height": 300,
+      "color": "5"
+    },
+    {
+      "id": "f4-01",
+      "type": "file",
+      "file": "03_Creacion_de_Servicios_y_Arquitecturas/01_crear_docker_monorepo_con_base_de_datos.md",
+      "x": 660,
+      "y": -120,
+      "width": 160,
+      "height": 60
+    },
+    {
+      "id": "f4-02",
+      "type": "file",
+      "file": "04_Vinculacion_y_Conexiones_Linkar/01_vincular_frontend_y_backend_parte_1.md",
+      "x": 660,
+      "y": -30,
+      "width": 160,
+      "height": 60
+    },
+    {
+      "id": "f4-03",
+      "type": "file",
+      "file": "04_Vinculacion_y_Conexiones_Linkar/08_uso_de_healthcheck_y_nginx_proxy.md",
+      "x": 660,
+      "y": 60,
+      "width": 160,
+      "height": 60
+    },
+    {
+      "id": "fase5",
+      "type": "group",
+      "label": "☁️ FASE 5: Cloud (avanzado)",
+      "x": 920,
+      "y": -150,
+      "width": 200,
+      "height": 300,
+      "color": "6"
+    },
+    {
+      "id": "f5-01",
+      "type": "file",
+      "file": "05_IA_y_Despliegues_Modernos/04_despliegue_de_docker_en_vercel.md",
+      "x": 940,
+      "y": -120,
+      "width": 160,
+      "height": 60
+    },
+    {
+      "id": "f5-02",
+      "type": "file",
+      "file": "05_IA_y_Despliegues_Modernos/05_despliegue_de_docker_en_render.md",
+      "x": 940,
+      "y": -40,
+      "width": 160,
+      "height": 60
+    },
+    {
+      "id": "f5-03",
+      "type": "file",
+      "file": "05_IA_y_Despliegues_Modernos/10_despliegue_de_docker_en_self_hosted.md",
+      "x": 940,
+      "y": 40,
+      "width": 160,
+      "height": 60
+    }
+  ],
+  "edges": [
+    { "id": "e0", "fromNode": "start", "fromSide": "right", "toNode": "fase1", "toSide": "left" },
+    { "id": "e1", "fromNode": "f1-01", "fromSide": "bottom", "toNode": "f1-02", "toSide": "top" },
+    { "id": "e2", "fromNode": "f1-02", "fromSide": "bottom", "toNode": "f1-03", "toSide": "top" },
+    { "id": "e3", "fromNode": "f1-03", "fromSide": "right", "toNode": "f2-01", "toSide": "left" },
+    { "id": "e4", "fromNode": "f2-01", "fromSide": "bottom", "toNode": "f2-02", "toSide": "top" },
+    { "id": "e5", "fromNode": "f2-02", "fromSide": "bottom", "toNode": "f2-03", "toSide": "top" },
+    { "id": "e6", "fromNode": "f2-03", "fromSide": "right", "toNode": "f3-01", "toSide": "left" },
+    { "id": "e7", "fromNode": "f3-01", "fromSide": "bottom", "toNode": "f3-02", "toSide": "top" },
+    { "id": "e8", "fromNode": "f3-02", "fromSide": "bottom", "toNode": "f3-03", "toSide": "top" },
+    { "id": "e9", "fromNode": "f3-03", "fromSide": "right", "toNode": "f4-01", "toSide": "left" },
+    { "id": "e10", "fromNode": "f4-01", "fromSide": "bottom", "toNode": "f4-02", "toSide": "top" },
+    { "id": "e11", "fromNode": "f4-02", "fromSide": "bottom", "toNode": "f4-03", "toSide": "top" },
+    { "id": "e12", "fromNode": "f4-03", "fromSide": "right", "toNode": "f5-01", "toSide": "left" },
+    { "id": "e13", "fromNode": "f5-01", "fromSide": "bottom", "toNode": "f5-02", "toSide": "top" },
+    { "id": "e14", "fromNode": "f5-02", "fromSide": "bottom", "toNode": "f5-03", "toSide": "top" }
+  ]
+}
