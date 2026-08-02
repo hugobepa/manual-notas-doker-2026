@@ -35,9 +35,8 @@ const COLOR_MAP: Record<string, string> = {
 };
 
 function fileToWikiUrl(file: string): string {
-  const base = import.meta.env.BASE_URL;
-  const slug = file.replace(/\.md$/, "");
-  return `${base}wiki/${slug}`;
+  const slug = file.replace(/\.md$/, "").toLowerCase();
+  return `${import.meta.env.BASE_URL}wiki/${slug}`;
 }
 
 function fileToLabel(file: string): string {

@@ -17,10 +17,14 @@ interface PagefindModule {
 }
 
 function normalizeResultUrl(r: PagefindResultData): PagefindResultData {
-  return {
-    ...r,
-    url: r.url.replace("/dist/", "/").replace(/\/$/, ""),
-  };
+  const base = (import.meta.env.BASE_URL || "/").replace(/\/$/, "");
+  let url = r.url.replace("/dist/", "/").replace(/\/$/, "");
+
+  if (base && !url.startsWith(base)) {
+    url = `${base}${url.startsWith("/") ? url : `/${url}`}`;
+  }
+
+  return { ...r, url };
 }
 
 class SearchController {
@@ -133,7 +137,9 @@ class SearchController {
       const pagefindPath = `${import.meta.env.BASE_URL}pagefind/pagefind.js`;
       const pf = await import(/* @vite-ignore */ pagefindPath);
       this.pagefind = pf as PagefindModule;
-      await this.pagefind.init();
+      await this.pagefind.init({
+        basePath: `${import.meta.env.BASE_URL}pagefind/`,
+      });
     })();
     return this.initPromise;
   }

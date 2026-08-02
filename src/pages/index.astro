@@ -5,9 +5,9 @@ import { Kbd } from "@/components/ui/kbd";
 import { SITE } from "@/lib/site-config";
 import { getCategorizedNotes } from "@/lib/wiki/get-categorized-notes";
 import NoteCard from "@/components/wiki/NoteCard.astro";
+import { withBase } from "@/lib/base-url";
 
 const categories = await getCategorizedNotes();
-const base = import.meta.env.BASE_URL;
 
 const FOLDER_LABELS: Record<string, string> = {
   index: "Inicio",
@@ -41,7 +41,7 @@ function labelFor(name: string): string {
     <header class="mb-16">
       <div class="flex items-center gap-3 mb-4">
         <img
-          src={`${base}docker-mark-ocean-blue.svg`}
+          src={withBase("docker-mark-ocean-blue.svg")}
           alt="Docker"
           class="h-12 w-12"
         />
@@ -55,13 +55,13 @@ function labelFor(name: string): string {
       </p>
       <div class="mt-6 flex flex-wrap gap-3">
         <a
-          href={`${base}wiki/MOC_Docker_General`}
+          href={withBase("wiki/moc_docker_general")}
           class="btn-docker inline-flex items-center gap-2 rounded-full bg-[#2496ed] px-5 py-2 text-sm font-semibold text-white hover:bg-[#1d63ed]"
         >
           <i class="fa-solid fa-map"></i> MOC General
         </a>
         <a
-          href={`${base}wiki/08_Dashboards/00_dashboard_general`}
+          href={withBase("wiki/08_dashboards/00_dashboard_general")}
           class="inline-flex items-center gap-2 rounded-full border-2 border-[#2496ed] px-5 py-2 text-sm font-semibold text-[#1d63ed] hover:bg-[#e8f2fc]"
         >
           <i class="fa-solid fa-chart-pie"></i> Dashboards
@@ -102,7 +102,7 @@ function labelFor(name: string): string {
 
     <footer class="flex justify-center">
       <a
-        href={`${base}tags`}
+        href={withBase("tags")}
         class="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
       >
         Explorar tags

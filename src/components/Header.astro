@@ -4,6 +4,7 @@ import { SITE } from "@/lib/site-config";
 import { Button } from "@/components/ui/button";
 import { Kbd } from "@/components/ui/kbd";
 import ThemeToggle from "@/components/ThemeToggle.astro";
+import { withBase } from "@/lib/base-url";
 
 const path = Astro.url.pathname;
 ---
@@ -24,8 +25,8 @@ const path = Astro.url.pathname;
           </Button>
         )
       }
-      <a href={import.meta.env.BASE_URL} class="font-serif text-lg font-semibold tracking-tight flex items-center gap-2"
-        ><img src={`${import.meta.env.BASE_URL}docker-mark-ocean-blue.svg`} alt="" class="h-6 w-6" />
+      <a href={withBase("")} class="font-serif text-lg font-semibold tracking-tight flex items-center gap-2"
+        ><img src={withBase("docker-mark-ocean-blue.svg")} alt="" class="h-6 w-6" />
         {SITE.name}</a
       >
     </div>

@@ -78,12 +78,15 @@ const breadcrumbs = generateBreadcrumbs(Astro.url.pathname);
 
         <article class="custom-prose max-w-none" data-pagefind-body>
           <span data-pagefind-meta={`title:${title}`} hidden></span>
-          <span data-pagefind-meta={`type:${type}`} hidden></span>
-          <span data-pagefind-meta={`category:${category}`} hidden></span>
-          <span data-pagefind-meta={`complexity:${complexity}`} hidden></span>
+          <span data-pagefind-meta={`type:${type}`} data-pagefind-filter={`type:${type}`} hidden></span>
+          <span data-pagefind-meta={`category:${category}`} data-pagefind-filter={`category:${category}`} hidden></span>
+          <span data-pagefind-meta={`complexity:${complexity}`} data-pagefind-filter={`complexity:${complexity}`} hidden></span>
           {
             tags.map((tag) => (
-              <span data-pagefind-meta={`tag:${tag}`} hidden></span>
+              <>
+                <span data-pagefind-meta={`tag:${tag}`} hidden></span>
+                <span data-pagefind-filter={`tag:${tag}`} hidden></span>
+              </>
             ))
           }
           <slot />

@@ -2,9 +2,10 @@
 import { getCollection } from "astro:content";
 import WikiNavNode, { type TreeNode } from "./WikiNavNode.astro";
 import { sortTreeNodes } from "@/lib/wiki/tree-utils";
+import { wikiHref } from "@/lib/base-url";
 
 const allNotes = await getCollection("wiki");
-const currentPath = Astro.url.pathname.replace(/\/$/, "");
+const currentPath = Astro.url.pathname;
 
 function humanize(slug: string): string {
   return slug
@@ -20,17 +21,13 @@ function makeTreeNode(
 ): TreeNode {
   return {
     label: isFile ? note.data.title : humanize(segment),
-    href: isFile
-      ? note.id === "index"
-        ? "/wiki"
-        : `/wiki/${note.id}`
-      : undefined,
+    href: isFile ? wikiHref(note.id) : undefined,
     children: {},
   };
 }
 
 function updateFileNode(node: TreeNode, note: (typeof allNotes)[number]): void {
-  node.href = note.id === "index" ? "/wiki" : `/wiki/${note.id}`;
+  node.href = wikiHref(note.id);
   node.label = note.data.title;
 }
 

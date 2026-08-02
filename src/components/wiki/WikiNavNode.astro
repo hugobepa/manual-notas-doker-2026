@@ -8,6 +8,7 @@ import { ChevronRight } from "@lucide/astro";
 import WikiNavNode from "./WikiNavNode.astro";
 import { cn } from "@/lib/utils";
 import { sortTreeNodes } from "@/lib/wiki/tree-utils";
+import { normalizePath } from "@/lib/base-url";
 
 export interface TreeNode {
   label: string;
@@ -26,7 +27,8 @@ const { node, class: className, depth, currentPath } = Astro.props;
 
 const childrenKeys = sortTreeNodes(node.children);
 const hasChildren = childrenKeys.length > 0;
-const isActive = node.href && currentPath === node.href.replace(/\/$/, "");
+const isActive =
+  node.href && normalizePath(currentPath) === normalizePath(node.href);
 const isFolder = !node.href && hasChildren;
 const isRootCategory = isFolder && depth === 0;
 
@@ -42,7 +44,7 @@ function getIndentClass(depth: number): string {
 }
 
 function isChildActive(n: TreeNode): boolean {
-  if (n.href && currentPath === n.href.replace(/\/$/, "")) return true;
+  if (n.href && normalizePath(currentPath) === normalizePath(n.href)) return true;
   for (const child of Object.values(n.children)) {
     if (isChildActive(child)) return true;
   }

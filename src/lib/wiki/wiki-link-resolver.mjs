@@ -10,22 +10,19 @@ function isMarkdownFile(file) {
   );
 }
 
-/**
- * Builds a map of wiki filenames to their full relative paths.
- * E.g. "git-workflow" -> "notes/git-workflow"
- */
 function buildWikiLinksMap() {
   const wikiLinksMap = new Map();
   try {
-    // Go up from src/lib/wiki to src/content/wiki
     const contentWikiPath = path.resolve(__dirname, "../../content/wiki");
     const wikiFiles = fs.readdirSync(contentWikiPath, { recursive: true });
 
     for (const file of wikiFiles) {
       if (isMarkdownFile(file)) {
-        const slug = file.replace(/\.(md|mdx)?$/, "");
+        const slug = file.replace(/\.(md|mdx)?$/, "").replace(/\\/g, "/");
         const basename = path.basename(slug);
-        wikiLinksMap.set(basename.toLowerCase(), slug);
+        const lowerSlug = slug.toLowerCase();
+        wikiLinksMap.set(basename.toLowerCase(), lowerSlug);
+        wikiLinksMap.set(lowerSlug, lowerSlug);
       }
     }
   } catch (e) {
@@ -36,12 +33,20 @@ function buildWikiLinksMap() {
 
 const wikiLinksMap = buildWikiLinksMap();
 
-export const wikiLinkOptions = {
-  pageResolver: (name) => {
-    return [name.replace(/ /g, "-").toLowerCase()];
-  },
-  hrefTemplate: (permalink) => {
-    const resolved = wikiLinksMap.get(permalink) || permalink;
-    return `/wiki/${resolved}`;
-  },
-};
+export function createWikiLinkOptions(base = "/") {
+  const normalizedBase = base.endsWith("/") ? base.slice(0, -1) : base;
+
+  return {
+    pageResolver: (name) => {
+      return [name.replace(/ /g, "-").toLowerCase()];
+    },
+    hrefTemplate: (permalink) => {
+      const key = permalink.replace(/\\/g, "/").toLowerCase();
+      const resolved = wikiLinksMap.get(key) || key;
+      return `${normalizedBase}/wiki/${resolved}`;
+    },
+  };
+}
+
+/** @deprecated Usar createWikiLinkOptions(base) desde astro.config */
+export const wikiLinkOptions = createWikiLinkOptions("/");

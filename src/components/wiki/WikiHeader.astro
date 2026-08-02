@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import type { Breadcrumb as BreadcrumbType } from "@/lib/wiki/generate-breadcrumbs";
+import { withBase } from "@/lib/base-url";
 import { Download } from "@lucide/astro";
 
 interface Props {
@@ -49,7 +50,7 @@ const showDownload = rawContent && downloadFilename;
 <header class="mb-10">
   <Breadcrumb class="mb-4">
     <BreadcrumbList>
-      <BreadcrumbItem><a href="/">Home</a></BreadcrumbItem>
+      <BreadcrumbItem><a href={withBase("")}>Inicio</a></BreadcrumbItem>
       <BreadcrumbSeparator />
       {
         breadcrumbs.map((breadcrumb, index) => (

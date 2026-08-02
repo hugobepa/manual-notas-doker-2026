@@ -1,6 +1,7 @@
 ---
 import { StickySurface } from "@/components/ui/sticky-surface";
 import { tagToSlug } from "@/lib/wiki/tag-slug";
+import { withBase } from "@/lib/base-url";
 
 interface Heading {
   depth: number;
@@ -14,7 +15,6 @@ interface Props {
 }
 
 const { headings, tags } = Astro.props;
-const base = import.meta.env.BASE_URL;
 
 const tocHeadings = headings.filter((h) => h.depth > 1);
 
@@ -58,7 +58,7 @@ function tocIndent(depth: number): string {
     tags.length > 0 && (
       <div>
         <a
-          href={`${base}tags`}
+          href={withBase("tags")}
           class="mb-3 block text-xs font-semibold uppercase tracking-widest text-muted-foreground transition-colors hover:text-foreground"
         >
           Tags
@@ -66,7 +66,7 @@ function tocIndent(depth: number): string {
         <div class="flex flex-wrap gap-1.5">
           {tags.map((tag) => (
             <a
-              href={`${base}tag/${tagToSlug(tag)}`}
+              href={withBase(`tag/${tagToSlug(tag)}`)}
               class="rounded bg-muted px-2 py-0.5 text-xs text-muted-foreground transition-colors hover:bg-primary/10 hover:text-primary"
             >
               {tag}

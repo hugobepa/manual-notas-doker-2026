@@ -9,7 +9,7 @@ import { SITE } from "./src/lib/site-config";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import wikiLink from "remark-wiki-link";
-import { wikiLinkOptions } from "./src/lib/wiki/wiki-link-resolver.mjs";
+import { createWikiLinkOptions } from "./src/lib/wiki/wiki-link-resolver.mjs";
 import { remarkCustomSyntax } from "./src/lib/wiki/remark-custom-syntax.mjs";
 import { remarkAlert } from "remark-github-blockquote-alert";
 import { remarkDefinitionList } from "remark-definition-list";
@@ -44,10 +44,12 @@ const BEJAMAS_ASTRO_FONTS = [
 // bejamas:astro-fonts:end
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const SITE_BASE = "/manual-notas-doker-2026";
+const wikiLinks = createWikiLinkOptions(SITE_BASE);
 
 export default defineConfig({
   site: SITE.url,
-  base: "/manual-notas-doker-2026",
+  base: SITE_BASE,
   fonts: BEJAMAS_ASTRO_FONTS,
   vite: {
     plugins: [tailwindcss()],
@@ -62,7 +64,7 @@ export default defineConfig({
     processor: unified({
       remarkPlugins: [
         remarkMath,
-        [wikiLink, wikiLinkOptions],
+        [wikiLink, wikiLinks],
         remarkDefinitionList,
         remarkCustomSyntax,
         remarkAlert,
