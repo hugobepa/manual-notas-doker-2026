@@ -13,7 +13,18 @@ interface PagefindSearchResult {
 
 interface PagefindModule {
   init: () => Promise<void>;
+  options: (opts: {
+    basePath?: string;
+    baseUrl?: string;
+  }) => Promise<void>;
   search: (query: string) => Promise<{ results: PagefindSearchResult[] }>;
+}
+
+function getPagefindPaths() {
+  const base = import.meta.env.BASE_URL || "/";
+  const baseUrl = base.endsWith("/") ? base : `${base}/`;
+  const basePath = `${baseUrl}pagefind/`;
+  return { baseUrl, basePath, scriptUrl: `${baseUrl}pagefind/pagefind.js` };
 }
 
 function normalizeResultUrl(r: PagefindResultData): PagefindResultData {
@@ -134,12 +145,21 @@ class SearchController {
   private loadPagefind(): Promise<void> {
     if (this.initPromise) return this.initPromise;
     this.initPromise = (async () => {
-      const pagefindPath = `${import.meta.env.BASE_URL}pagefind/pagefind.js`;
-      const pf = await import(/* @vite-ignore */ pagefindPath);
-      this.pagefind = pf as PagefindModule;
-      await this.pagefind.init({
-        basePath: `${import.meta.env.BASE_URL}pagefind/`,
-      });
+      const { baseUrl, basePath, scriptUrl } = getPagefindPaths();
+
+      try {
+        const mod = await import(/* @vite-ignore */ scriptUrl);
+        const pf = mod as PagefindModule;
+
+        // IMPORTANT: options() BEFORE init() — basePath/baseUrl no van en init()
+        await pf.options({ basePath, baseUrl });
+        await pf.init();
+
+        this.pagefind = pf;
+      } catch (err) {
+        console.error("Pagefind failed to load:", err);
+        throw err;
+      }
     })();
     return this.initPromise;
   }

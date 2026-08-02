@@ -44,7 +44,7 @@ const BEJAMAS_ASTRO_FONTS = [
 // bejamas:astro-fonts:end
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const SITE_BASE = "/manual-notas-doker-2026";
+const SITE_BASE = SITE.basePath;
 const wikiLinks = createWikiLinkOptions(SITE_BASE);
 
 export default defineConfig({

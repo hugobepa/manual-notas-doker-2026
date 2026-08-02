@@ -2,7 +2,7 @@
 
 Documentación estática generada con [Veka](https://github.com/masmuss/veka) (Astro) a partir del vault Obsidian Docker.
 
-**URL:** https://hugobepa.github.io/manual-notas-doker-2026/
+**URL:** https://hugobepa.github.io/manual-notas-docker-2026/
 
 ## Características
 
@@ -46,4 +46,4 @@ Push a `main` activa el workflow `.github/workflows/deploy.yml`.
 
 Configuración GitHub Pages: **Source → GitHub Actions**.
 
-Base path: `/manual-notas-doker-2026` (ver `astro.config.mjs`).
+Base path: `/manual-notas-docker-2026` (ver `astro.config.mjs`).

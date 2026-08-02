@@ -4,8 +4,9 @@ export const SITE = {
   description:
     "Documentación de Docker, Podman, Compose, arquitecturas y despliegues cloud para desarrolladores frontend.",
   author: "hugobepa",
-  url: "https://hugobepa.github.io/manual-notas-doker-2026",
+  basePath: "/manual-notas-docker-2026",
+  url: "https://hugobepa.github.io/manual-notas-docker-2026",
   image: "/docker-mark-ocean-blue.svg",
   favicon: "/favicon.svg",
-  github: "https://github.com/hugobepa/manual-notas-doker-2026",
+  github: "https://github.com/hugobepa/manual-notas-docker-2026",
 };

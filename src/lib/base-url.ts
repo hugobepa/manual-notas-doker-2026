@@ -1,4 +1,4 @@
-/** Prefijo base de GitHub Pages (p. ej. /manual-notas-doker-2026/) */
+/** Prefijo base de GitHub Pages (p. ej. /manual-notas-docker-2026/) */
 export function getBaseUrl(): string {
   const base = import.meta.env.BASE_URL || "/";
   return base.endsWith("/") ? base : `${base}/`;
