@@ -77,6 +77,70 @@ function labelFor(name: string): string {
       </div>
     </header>
 
+    <aside
+      class="card-docker mb-14 rounded-lg border border-border bg-card p-5 text-sm leading-relaxed text-muted-foreground md:p-6"
+      aria-label="Agradecimientos y enlaces"
+    >
+      <p class="mb-3 font-semibold text-foreground">
+        <i class="fa-solid fa-heart text-[#2496ed] mr-1.5" aria-hidden="true"></i>
+        Agradecimientos
+      </p>
+      <p>
+        Agradezco a
+        <a
+          href="https://midu.dev/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-semibold text-[#1d63ed] hover:underline"
+        >midudev</a>
+        por su
+        <a
+          href="https://www.youtube.com/watch?v=wZnddhLrmiM&t=3284s"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-medium text-[#1d63ed] hover:underline"
+        >
+          <i class="fa-brands fa-youtube mr-0.5" aria-hidden="true"></i>
+          tutorial Docker en YouTube (1 h 52 m)
+        </a>.
+        Recomiendo verlo para entender mejor Docker.
+      </p>
+      <p class="mt-3">
+        Los ejemplos del curso están en
+        <a
+          href="https://github.com/midudev/jscamp/tree/main/10-docker"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-medium text-[#1d63ed] hover:underline"
+        >
+          <i class="fa-brands fa-github mr-0.5" aria-hidden="true"></i>
+          midudev/jscamp — 10-docker
+        </a>.
+      </p>
+      <p class="mt-3">
+        Este sitio está basado en el vault
+        <a
+          href="https://github.com/hugobepa/docker_obsidian-vault_manual-roadmap-dockers_2026"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-medium text-[#1d63ed] hover:underline"
+        >
+          <i class="fa-brands fa-github mr-0.5" aria-hidden="true"></i>
+          docker_obsidian-vault_manual-roadmap-dockers_2026
+        </a>
+        y construido con la plantilla
+        <a
+          href="https://github.com/masmuss/veka"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-medium text-[#1d63ed] hover:underline"
+        >
+          <i class="fa-brands fa-github mr-0.5" aria-hidden="true"></i>
+          Veka
+        </a>.
+      </p>
+    </aside>
+
     {
       categories.map(({ name, notes }) => (
         <section class="mb-14">

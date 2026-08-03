@@ -1,49 +1,63 @@
 # Manual Docker & Podman — Sitio web
 
-Documentación estática generada con [Veka](https://github.com/masmuss/veka) (Astro) a partir del vault Obsidian Docker.
+> Documentación estática para dominar Docker, Podman y el ecosistema de contenedores, orientada a desarrolladores frontend indie.
 
-**URL:** https://hugobepa.github.io/manual-notas-docker-2026/
+**Sitio en vivo:** [hugobepa.github.io/manual-notas-docker-2026](https://hugobepa.github.io/manual-notas-docker-2026/)
+
+---
+
+## ¿Qué es esto?
+
+Este repositorio es la **versión web** de un vault de Obsidian con más de **70 notas** sobre Docker, Compose, Podman, casos prácticos, IA/despliegues y chuletas.
+
+En la web puedes **buscar, navegar por tags y consultar** el contenido sin Obsidian.
+
+---
+
+## Origen del proyecto
+
+| Pieza | Enlace |
+| :---- | :----- |
+| **Vault Obsidian (contenido fuente)** | [docker_obsidian-vault_manual-roadmap-dockers_2026](https://github.com/hugobepa/docker_obsidian-vault_manual-roadmap-dockers_2026) |
+| **Plantilla web (Astro)** | [Veka](https://github.com/masmuss/veka) |
+
+---
+
+## Inspiración — midudev
+
+- [Curso de Docker desde cero (1 h 52 m)](https://www.youtube.com/watch?v=wZnddhLrmiM&t=3284s)
+- [Ejemplos jscamp/10-docker](https://github.com/midudev/jscamp/tree/main/10-docker)
+- [midu.dev](https://midu.dev/)
+
+---
 
 ## Características
 
-- 70+ notas con frontmatter (type, category, complexity, tags)
-- Búsqueda con **Pagefind** indexando metadatos
-- Diagramas **Mermaid** en dashboards y notas
-- Canvas de Obsidian renderizados como mapas interactivos
-- Tema Docker (Inter, paleta azul, Font Awesome)
-- Despliegue automático en GitHub Pages
+- 70+ notas con frontmatter (`type`, `category`, `complexity`, `tags`)
+- Búsqueda **Pagefind** (`⌘K`)
+- Diagramas **Mermaid** y **Canvas** de Obsidian
+- Tema Docker · despliegue en **GitHub Pages**
+
+---
 
 ## Desarrollo local
 
 ```bash
 pnpm install
-pnpm run import-vault   # reimportar contenido desde el vault fuente
 pnpm run dev
 ```
 
-Para probar búsqueda (Pagefind):
-
 ```bash
-pnpm run build
-pnpm run preview
+pnpm run build && pnpm run preview   # probar Pagefind
 ```
 
-## Estructura
+Base path: `/manual-notas-docker-2026` — el nombre del repo en GitHub debe coincidir (`docker`, no `doker`).
 
-```
-src/content/wiki/     ← Notas importadas del vault Obsidian
-public/canvas/        ← Archivos .canvas de Obsidian
-scripts/import-vault.mjs
-```
+---
 
-## Fuente del contenido
+## Enlaces
 
-Vault original: `0.pre-guia_crear-obs-wd/3.web/0.pre-doc_build-web/2.docker_manual-rml_2026`
-
-## Despliegue
-
-Push a `main` activa el workflow `.github/workflows/deploy.yml`.
-
-Configuración GitHub Pages: **Source → GitHub Actions**.
-
-Base path: `/manual-notas-docker-2026` (ver `astro.config.mjs`).
+- **Web:** https://hugobepa.github.io/manual-notas-docker-2026/
+- **Repo:** https://github.com/hugobepa/manual-notas-docker-2026
+- **Vault:** https://github.com/hugobepa/docker_obsidian-vault_manual-roadmap-dockers_2026
+- **Veka:** https://github.com/masmuss/veka
